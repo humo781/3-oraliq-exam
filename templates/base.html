@@ -10,31 +10,13 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body class="bg-gray-100 font-sans">
+{# HEADER #}
+{% include 'includes/header.html' %}
 
-    {# HEADER #}
-    {% include 'includes/header.html' %}
+    {% block content %} {% endblock %}
 
-    <div class="container mx-auto px-6 py-8">
-        <div class="flex flex-wrap">
-
-            {# SIDEBAR #}
-            {% include 'includes/sidebar.html' %}
-
-            <!-- Main Content -->
-            <div class="w-full md:w-3/4 lg:w-4/5 px-4">
-                {# SEARCHBAR #}
-                {% include 'includes/search_bar.html' %}
-                <!-- Blog Posts -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {% block content %}{% endblock %}
-                    </div>
-                    {# PAGINATION #}
-                {% include 'includes/pagination.html' %}
-            </div>
-        </div>
-    </div>
-    {# FOOTER #}
-    {% include 'includes/footer.html' %}
+{# FOOTER #}
+{% include 'includes/footer.html' %}
 </body>
 </html>
 
