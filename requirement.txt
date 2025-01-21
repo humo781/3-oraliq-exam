@@ -1,0 +1,44 @@
+Boshlang'ich sozlamalar
+1. gitinore sozlash
+2. venv yaratish va aktivatsiya qilish
+3. django o'rnatish
+4. config nomli proyekt yaratish
+5. static papka yaratish
+6. templates papka yaratish
+
+Loyihaning config sozlamalari
+1. app yaratish
+2. config/settings.py da appni installed_apps ga qo'shish
+3. config/settings.py da templates manzilini BASE_DIR orqali berish
+4. config/settings.py timezone ni 'Asia/Tashkent' ga to'g'irlash
+5. config/settings.py da static faylini sozlash
+6. config/settings.py da media faylini sozlash
+7. config/urls.py da applarning url ini ko'rsatish
+8. config/urls.py da home funksiyasini asosiy url ('') ga sozlash
+
+reponi nomi 3-oraliq-exam bo'lishi kerak
+
+Loyiha 4 ta app (ilova)dan iborat
+1. authors
+2. posts
+3. tags
+4. catalogs
+
+Vazifa shartlari
+Har bir app quyidagi talablarga javob berishi lozim.
+gitignore bo'lishi va keraksiz fayllar (.idea, pycache, db.sqlite3) repoga ketib qolmasligi kerak
+barcha html fayllarga backend ulang!
+template vorisdorlikka ahamiyatli bo'ling
+Database relations ga mos bo'lishi kerak
+mantiqiy (logika) fikrlab o'zila qolib ketgan joylarini o'zilar bartaraf etishingiz kerak
+base modeldan foydalaning agar kerak bo'lsa
+har bir model uchun Model Admin yozishingiz kerak, user-friendly bo'lishi kerak
+har bir html uchun logika yozib backend ulash kerak
+filter, search, order qismlarini qilish lozim
+seo-friendly url bo'lishi kerak
+
+ESLATMA!!!
+
+faqat seo-friendly url ni sozlash qoldi va buni tugatgandan song umumiy test qilish kerak
+yana bir narsa index filter results va search resultsni oxshash joylari bor eplay olsam base html yaratib shu uchalasi
+uchun alohida yarataman

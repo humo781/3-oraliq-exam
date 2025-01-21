@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Post Detail{% endblock %}
+
+{% block content %}
+<main class="container mx-auto px-6 py-8">
+    <article class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="{{ post.image.url }}" alt="Blog post cover image" >
+        <div class="p-6 md:p-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">{{ post.title }}</h1>
+            <div class="flex items-center mb-4">
+                <img src="https://img.freepik.com/free-vector/hacker-operating-laptop-cartoon-icon-illustration-technology-icon-concept-isolated-flat-cartoon-style_138676-2387.jpg" alt="Author" class="w-10 h-10 rounded-full mr-3">
+                <div>
+                    <p class="font-semibold text-gray-800">{{ post.author }}</p>
+                    <p class="text-sm text-gray-600">Published on {{ post.created_at }}</p>
+                </div>
+            </div>
+            <div class="prose max-w-none">
+                <p>{{ post.content }}</p>
+            </div>
+            <div class="mt-8 flex flex-wrap">
+                {% for tag in post.tags.all %}
+                    <span class="text-sm bg-blue-100 text-blue-800 rounded-full px-3 py-1 mr-2 mb-2">{{ tag.name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </article>
+
+    <!-- Comments Section -->
+    <section class="mt-12 bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold mb-6">Comments</h2>
+        <div class="space-y-6">
+            {% for comment in comments %}
+                <div class="flex">
+                    <div>
+                        <h3 class="font-semibold">{{ comment.author }}</h3>
+                        <p class="text-gray-600 text-sm mb-2">Posted on {{ comment.created_at }}</p>
+                        <p>{{ comment.comment }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <!-- Add Comment Form -->
+            <form method="post" action="{{ post.get_detail_url }}" class="mt-8">
+                {% csrf_token %}
+                <h3 class="text-xl font-semibold mb-4">Add a Comment</h3>
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Author</label>
+                    <input type="text" id="name" name="author" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                <div class="mb-4">
+                    <label for="comment" class="block text-gray-700 text-sm font-bold mb-2">Comment</label>
+                    <textarea id="comment" name="comment" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
+                </div>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit Comment</button>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock %}
