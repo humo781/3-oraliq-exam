@@ -6,11 +6,14 @@ from .models import Post, Comment
 def home(request):
     catalogs = Catalog.objects.all()
     tags = Tag.objects.all()
+
     search = request.GET.get('search')
+
     if search:
         posts = Post.objects.filter(title__icontains=search)
     else:
         posts = Post.objects.all()
+
     ctx = {'posts': posts, 'catalogs': catalogs, 'tags': tags}
     return render(request, 'index.html', ctx)
 
@@ -46,9 +49,14 @@ def filter_results(request):
             posts = posts.filter(created_at__range=[start_date, end_date])
         if hashtags:
             posts = posts.filter(tags__id__in=hashtags).distinct()
+
     catalogs = Catalog.objects.all()
     tags = Tag.objects.all()
-    ctx = {'posts': posts, 'catalogs': catalogs, 'tags': tags}
+
+    ctx = {'posts': posts,
+           'catalogs': catalogs,
+           'tags': tags}
+
     return render(request, 'index.html', ctx)
 
 def post_comment(request, year, month, day, slug):

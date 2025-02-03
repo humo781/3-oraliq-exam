@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-
 from authors.baseModel import BaseModel
 from authors.models import Author
 from catalogs.models import Catalog

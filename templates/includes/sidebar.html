@@ -8,8 +8,7 @@
                 <div class="space-y-2">
                     {% for catalog in catalogs %}
                         <label class="flex items-center">
-                            <input type="checkbox" name="category" value="{{ catalog.id }}" class="form-checkbox text-blue-500"
-                            {% if catalog.id|stringformat:"s" in request.GET.getlist('category') %}checked{% endif %}>
+                            <input type="checkbox" name="category" value="{{ catalog.id }}" class="form-checkbox text-blue-500">
                             <span class="ml-2">{{ catalog.name }}</span>
                         </label>
                     {% endfor %}
